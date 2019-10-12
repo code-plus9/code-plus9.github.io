@@ -55,29 +55,33 @@
   };
 </script>
 
-  <meta name="keywords" content="program,server,java">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Code Plus Home">
-<meta property="og:url" content="http://code-plus.cn/index.html">
+  <meta name="description" content="泛型解决代码泛化问题的一种手段（继承、接口等）。泛型就是类型参数化。设计上提供很多灵活性。泛型、继承和接口，设计接口更加灵活。类型安全，利用泛型可以在编译期间检查这类问题。避免用Object时，运行时才能发现类型问题。使用时指定类型。 泛型解决什么问题？泛型是解决代码泛化问题的一种手段。 代码复用，代码泛化是程序设计永恒的追求，希望同一份代码可以应用在多种情况，解决多种问题。 面相对象程序设计中，">
+<meta name="keywords" content="program,server,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Generics">
+<meta property="og:url" content="http://code-plus.cn/2019/10/12/Java-Generics/index.html">
 <meta property="og:site_name" content="Code Plus Home">
+<meta property="og:description" content="泛型解决代码泛化问题的一种手段（继承、接口等）。泛型就是类型参数化。设计上提供很多灵活性。泛型、继承和接口，设计接口更加灵活。类型安全，利用泛型可以在编译期间检查这类问题。避免用Object时，运行时才能发现类型问题。使用时指定类型。 泛型解决什么问题？泛型是解决代码泛化问题的一种手段。 代码复用，代码泛化是程序设计永恒的追求，希望同一份代码可以应用在多种情况，解决多种问题。 面相对象程序设计中，">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-12T06:53:16.302Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Code Plus Home">
-  <link rel="canonical" href="http://code-plus.cn/">
+<meta name="twitter:title" content="Java Generics">
+<meta name="twitter:description" content="泛型解决代码泛化问题的一种手段（继承、接口等）。泛型就是类型参数化。设计上提供很多灵活性。泛型、继承和接口，设计接口更加灵活。类型安全，利用泛型可以在编译期间检查这类问题。避免用Object时，运行时才能发现类型问题。使用时指定类型。 泛型解决什么问题？泛型是解决代码泛化问题的一种手段。 代码复用，代码泛化是程序设计永恒的追求，希望同一份代码可以应用在多种情况，解决多种问题。 面相对象程序设计中，">
+  <link rel="canonical" href="http://code-plus.cn/2019/10/12/Java-Generics/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Code Plus Home</title>
+  <title>Java Generics | Code Plus Home</title>
   
 
 
@@ -187,10 +191,10 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://code-plus.cn/2019/10/12/Java-Generics/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -203,9 +207,8 @@
       <meta itemprop="name" content="Code Plus Home">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/12/Java-Generics/" class="post-title-link" itemprop="url">Java Generics</a>
+        <h1 class="post-title" itemprop="name headline">Java Generics
+
           
         </h1>
 
@@ -229,6 +232,14 @@
           
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
         </div>
       </header>
@@ -239,7 +250,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>解决代码泛化问题的一种手段（继承、接口等）。<br>泛型就是类型参数化。<br>设计上提供很多灵活性。<br>泛型、继承和接口，设计接口更加灵活。<br>类型安全，利用泛型可以在编译期间检查这类问题。避免用Object时，运行时才能发现类型问题。<br>使用时指定类型。</p>
+        <h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>解决代码泛化问题的一种手段（继承、接口等）。<br>泛型就是类型参数化。<br>设计上提供很多灵活性。<br>泛型、继承和接口，设计接口更加灵活。<br>类型安全，利用泛型可以在编译期间检查这类问题。避免用Object时，运行时才能发现类型问题。<br>使用时指定类型。</p>
 <h2 id="泛型解决什么问题？"><a href="#泛型解决什么问题？" class="headerlink" title="泛型解决什么问题？"></a>泛型解决什么问题？</h2><p>泛型是解决代码泛化问题的一种手段。</p>
 <p>代码复用，代码泛化是程序设计永恒的追求，希望同一份代码可以应用在多种情况，解决多种问题。</p>
 <p>面相对象程序设计中，利用多态来解决代码复用问题，这里的多态是指通过继承、抽象类、接口等技术来实现代码复用。我们只需要针对父类、抽象类或者接口写代码，就可以应用于他们的子类或者实现类中。</p>
@@ -295,126 +306,42 @@
 <p>但是这里可以不写泛型。</p>
 <p>可以将List&lt;?&gt;当做List<xxx>的“父类”，虽然说泛型没有继承关系。</xxx></p>
 
-        
-      
     </div>
 
     
     
     
+        
+      
+
       <footer class="post-footer">
-          <div class="post-eof"></div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/10/Java-Enum/" rel="next" title="Java Enum">
+                  <i class="fa fa-chevron-left"></i> Java Enum
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
         
       </footer>
+    
   </article>
   
   
   
 
-    
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://code-plus.cn/2019/10/10/Java-Enum/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Code Plus">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Code Plus Home">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/10/10/Java-Enum/" class="post-title-link" itemprop="url">Java Enum</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-10-10 18:18:19 / 修改时间：20:36:24" itemprop="dateCreated datePublished" datetime="2019-10-10T18:18:19+08:00">2019-10-10</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h1><blockquote>
-<p>关键字enum可以将一组具名的值的有限集合创建为一种新的类型，而这些具名的值可以作为常规的程序组件使用。</p>
-</blockquote>
-<h1 id="enum的基本特性"><a href="#enum的基本特性" class="headerlink" title="enum的基本特性"></a>enum的基本特性</h1><p>创建enum时，编译器会生成一个相关的类，这个类继承自java.lang.Enum。</p>
-<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><h3 id="values"><a href="#values" class="headerlink" title="values()"></a>values()</h3><p>返回enum实例的数组，用于遍历enum实例。这个方法不存在于java.lang.Enum。是编译器添加的一个静态方法。功能上与Class中getEnumConstants()方法相同。</p>
-<h3 id="和equals"><a href="#和equals" class="headerlink" title="== 和equals()"></a>== 和equals()</h3><p>相等比较</p>
-<h3 id="compareTo"><a href="#compareTo" class="headerlink" title="compareTo()"></a>compareTo()</h3><p>实现Comparable接口</p>
-<h3 id="name-和toString"><a href="#name-和toString" class="headerlink" title="name()和toString()"></a>name()和toString()</h3><p>返回enum实例值的字符串表示</p>
-<h3 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf()"></a>valueOf()</h3><p>根据名字返回enum实例</p>
-<h2 id="java-lang-Enum"><a href="#java-lang-Enum" class="headerlink" title="java.lang.Enum"></a>java.lang.Enum</h2><p>所有的枚举类型都会继承Enum,结构如下</p>
-<img src="/2019/10/10/Java-Enum/Enum.png" title="This is an example image">
-
-
-<ul>
-<li>name为枚举类型声明时的名字</li>
-<li>ordinal为枚举实例声明的次序，从0开始</li>
-</ul>
-<h2 id="自定义方法"><a href="#自定义方法" class="headerlink" title="自定义方法"></a>自定义方法</h2><p>enum可以看做是一种类。enum类型不能继承，因为枚举都继承自java.lang.Enum，也不能被继承，因为会被编译成final类。可以向enum类型中添加方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> OzWitch &#123;</span><br><span class="line">    WEST(<span class="string">"WEST description"</span>),</span><br><span class="line">    NORTH(<span class="string">"NORTH description"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">    OzWitch(String description) &#123;</span><br><span class="line">        <span class="keyword">this</span>.description = description;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDescription</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> description;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name().toLowerCase();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (OzWitch ozWitch : OzWitch.values())&#123;</span><br><span class="line">            System.out.println(ozWitch);</span><br><span class="line">            System.out.println(ozWitch.getDescription());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的例子为枚举类型修改了构造方法，同时添加了两个方法。其中构造方法不能是public。当然也可以覆盖枚举类型的方法。</p>
-<h1 id="实现接口"><a href="#实现接口" class="headerlink" title="实现接口"></a>实现接口</h1><p>enum实例不能继承，但是可以实现接口。</p>
-<h1 id="switch语句中使用enum"><a href="#switch语句中使用enum" class="headerlink" title="switch语句中使用enum"></a>switch语句中使用enum</h1><p>switch中只能使用整数值，而枚举实例本身就具有整数值的次序。</p>
-<h1 id="常量方法"><a href="#常量方法" class="headerlink" title="常量方法"></a>常量方法</h1><p>实现常量方法，需要为enum定义abstract方法，然后为每个实例实现该抽象方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Shrubbery &#123;</span><br><span class="line">    GROUND &#123;</span><br><span class="line">        <span class="function">String <span class="title">getInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> name().toLowerCase();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    CRAWLING &#123;</span><br><span class="line">        <span class="function">String <span class="title">getInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> name().toLowerCase();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    HANGING &#123;</span><br><span class="line">        <span class="function">String <span class="title">getInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> name().toLowerCase();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> String <span class="title">getInfo</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Shrubbery shrubbery : Shrubbery.values())&#123;</span><br><span class="line">            System.out.println(shrubbery.getInfo());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="enum类型编译"><a href="#enum类型编译" class="headerlink" title="enum类型编译"></a>enum类型编译</h1><p>下面为enum Shrubbery编译之后的代码。编译之后为final类。继承自java.lang.Enum。Shrubbery中的值均为Shrubbery类型的static final 实例。编译器添加了两个方法，分别是values()和valueOf()</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Shrubbery</span> <span class="keyword">extends</span> <span class="title">java</span>.<span class="title">lang</span>.<span class="title">Enum</span>&lt;<span class="title">Shrubbery</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Shrubbery GROUND;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Shrubbery CRAWLING;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Shrubbery HANGING;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Shrubbery[] values();</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Shrubbery <span class="title">valueOf</span><span class="params">(java.lang.String)</span></span>;</span><br><span class="line">  <span class="keyword">static</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
-
-  
-
 
 
           </div>
@@ -431,6 +358,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -443,6 +375,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#泛型"><span class="nav-number">1.</span> <span class="nav-text">泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型解决什么问题？"><span class="nav-number">1.1.</span> <span class="nav-text">泛型解决什么问题？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语法"><span class="nav-number">2.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型类"><span class="nav-number">2.1.</span> <span class="nav-text">泛型类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型接口"><span class="nav-number">2.2.</span> <span class="nav-text">泛型接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型方法"><span class="nav-number">2.3.</span> <span class="nav-text">泛型方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#核心问题"><span class="nav-number">3.</span> <span class="nav-text">核心问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#擦除"><span class="nav-number">3.1.</span> <span class="nav-text">擦除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class"><span class="nav-number">3.2.</span> <span class="nav-text">Class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型限定"><span class="nav-number">3.3.</span> <span class="nav-text">类型限定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通配符"><span class="nav-number">3.4.</span> <span class="nav-text">通配符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#限定通配符"><span class="nav-number">3.4.1.</span> <span class="nav-text">限定通配符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#extends上界能读不能写"><span class="nav-number">3.4.1.1.</span> <span class="nav-text">extends上界能读不能写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#super下届能写不能读"><span class="nav-number">3.4.1.2.</span> <span class="nav-text">super下届能写不能读</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PECS"><span class="nav-number">3.4.1.3.</span> <span class="nav-text">PECS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非限定通配符"><span class="nav-number">3.4.2.</span> <span class="nav-text">非限定通配符</span></a></li></ol></li></ol></li></ol></div>
+        
       </div>
       <!--/noindex-->
 

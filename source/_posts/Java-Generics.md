@@ -2,6 +2,7 @@
 title: Java Generics
 date: 2019-10-12 14:40:28
 tags:
+- java
 ---
 # 泛型
 解决代码泛化问题的一种手段（继承、接口等）。

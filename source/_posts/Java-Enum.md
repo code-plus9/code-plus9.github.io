@@ -1,7 +1,8 @@
 ---
 title: Java Enum
 date: 2019-10-10 18:18:19
-tags:
+tags: 
+- java
 ---
 # enum
 

@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="keywords" content="program,server,java">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Code Plus Home">
+<meta property="og:url" content="http://code-plus.cn/index.html">
+<meta property="og:site_name" content="Code Plus Home">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Code Plus Home">
+  <link rel="canonical" href="http://code-plus.cn/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Code Plus Home</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Code Plus Home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://code-plus.cn/2020/05/22/如何高效构建管理系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Code Plus">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Code Plus Home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/05/22/如何高效构建管理系统/" class="post-title-link" itemprop="url">如何高效构建管理系统</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-22 01:22:26" itemprop="dateCreated datePublished" datetime="2020-05-22T01:22:26+08:00">2020-05-22</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-01 01:29:52" itemprop="dateModified" datetime="2020-06-01T01:29:52+08:00">2020-06-01</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>服务端内部管理系统的质量一直是个痛点。</p>
+<p>比较重要的业务系统，会有一个团队来开发维护。这类的管理系统因为涉及核心业务，投入资源比较大，会配置PM，UI，前端，服务端，质量和完成度会比较好。</p>
+<p>随着服务端涉及的功能越来越复杂以及各个功能的服务化，服务端团队需要很多内部管理系统，例如短信服务，图片上传服务，权限服务等。这类系统的特点是：每个功能都比较简单，整体上看需求比较杂，数量比较庞大。开篇所说的内部系统主要指的就是这类系统。<br>在实际的开发过程中，由于这类系统的特点，不会投入过多资源，往往都是这个服务的开发自己做。一般会产生以下情况：</p>
+<h3 id="不做管理系统"><a href="#不做管理系统" class="headerlink" title="不做管理系统"></a>不做管理系统</h3><p>如果不做管理系统，那有一些配置管理的需求怎么办？答案是直接修改数据库，实际上这种情况占比不小。这么做的主要问题：一个是运营需求得找开发，效率低；另一个是直接改数据库，可能会改错，导致服务出问题。</p>
+<h3 id="只做接口"><a href="#只做接口" class="headerlink" title="只做接口"></a>只做接口</h3><p>服务端开发往往不愿意写前端代码，主要是因为服务端写前端的效率不高，而且一般服务端并不了解前端UI框架，写出来也比较丑。这么做的主要问题：运营需求跟开发依然不能分离。</p>
+<h3 id="做个简单页面"><a href="#做个简单页面" class="headerlink" title="做个简单页面"></a>做个简单页面</h3><p>如果运营需求很频繁，即使服务端开发前端效率低，也得做。总结一下这么做的主要问题：完成度差，UI风格不统一，系统分散，安全相关的账号、权限、操作记录等都不具备。</p>
+<h3 id="做个完整的系统"><a href="#做个完整的系统" class="headerlink" title="做个完整的系统"></a>做个完整的系统</h3><p>如果每个系统都投入UI，前端，服务端去开发，也会有如下问题：系统分散杂乱；UI，交互不统一；账号，权限，历史记录等功能重复开发。</p>
+<p>以上总结了内部管理系统的问题，间接的得出了一个结论：高质量的内部系统是可以提升团队的开发效率的。既然在高质量的问题上可以达成共识，下面需要讨论的是如果构建一套流程高效的完成，实现服务开发、前端开发、管理系统维护的平衡。</p>
+<p>统一管理系统架构</p>
+<img src="/2020/05/22/如何高效构建管理系统/editor-manager.png" title="整体架构">
+
+<p>管理系统页面二级结构</p>
+<img src="/2020/05/22/如何高效构建管理系统/editor-front.png" title="前端页面二级结构">
+
+<p>服务端：只负责编写管理相关的API接口，涉及到账号、权限的部分，接入统一的账号服务，权限服务。</p>
+<p>统一管理系统：所有管理系统的统一入口，负责账号登录，系统级别的权限管理，操作历史记录等。</p>
+<p>前端：账号、权限和操作历史与统一管理系统对接；业务功能与具体的服务端对接。</p>
+<p>页面二级结构：一级页面中可以配置子系统，系统模块多时，只展示当前账号具有权限的系统，一级页面可配置，只开发一次即可。<br>二级页面独占一个页面，方便系统功能开发。</p>
+<p>备注：<br>账号、权限需要有统一的服务。<br>业务服务端和统一管理系统在账号、权限等公共问题的接口是一致的。<br>新增管理系统，只需要前端页面与具体的服务端管理api对接。<br>前端页面统一在一起，方便UI风格，交互方式统一。</p>
+<p>这套流程已经在团队中实践一段时间了，目前已经接入多个系统，取得了一定的效果。</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://code-plus.cn/2020/04/28/程序员工作层次/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Code Plus">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Code Plus Home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/04/28/程序员工作层次/" class="post-title-link" itemprop="url">程序员工作层次</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-28 21:13:48 / 修改时间：23:09:50" itemprop="dateCreated datePublished" datetime="2020-04-28T21:13:48+08:00">2020-04-28</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>程序员的工作层次：</p>
+<img src="/2020/04/28/程序员工作层次/work.png" title="This is an example image">
+
+<p>第一层，基本完成工作，满足基本功能需求，可能完成度不高。</p>
+<p>第二层，高质量完成工作，完成度很高。</p>
+<p>第三层，较短时间完成高质量的工作，这需要程序员具有很强的开发能力。</p>
+<p>第四层，满足高效、高质量的同时，开发流程很愉悦，这就需要优秀的团队和先进的开发体系了。</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://code-plus.cn/2020/03/20/服务端研发体系/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Code Plus">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Code Plus Home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/03/20/服务端研发体系/" class="post-title-link" itemprop="url">服务端研发体系</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-20 01:31:15" itemprop="dateCreated datePublished" datetime="2020-03-20T01:31:15+08:00">2020-03-20</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-01 01:46:25" itemprop="dateModified" datetime="2020-06-01T01:46:25+08:00">2020-06-01</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>“研发体系”这个词，听上去比较抽象，像是一种“PPT”词汇。本文中的“研发体系”并不抽象，而是从一线研发的角度，具体思考研发体系的问题。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>首先介绍我个人思考“研发体系”的背景。前两年工作变动，我调整到了一个历史悠久的研发组。刚开始就遇到了核心系统不稳定的问题，所谓历史悠久，是指核心服务的代码时间很久，有很多历史问题，在那段时间集中爆发了。</p>
+<p>在解决稳定性问题时，我发现绝大多数问题并不复杂，都是一些小问题，在研发阶段都可以避免，例如请求一个内部web服务，并没有通过域名，而是直接与具体服务的机器名直接连接，轮询请求，在请求时并没有做异常检测，也没有熔断机制，内部web服务一个节点阻塞，或者挂了，直接导致业务服务因为线程池打满而阻塞。看似直连提升的性能，却没有解决直连产生的问题。例如一些服务发布组件给业务调用，并没有做服务化，组件的实现就是直接查数据库，组件依赖复杂，业务接入复杂，服务升级优化困难。这类小问题在服务中多了，时间长了，就会集中爆发。当时令我比较痛苦的并不是解决已有的问题，而是在我解决问题时，新开发的服务也在不断的产生类似的问题。这就会导致子子孙孙无穷尽了。</p>
+<p>首先得保证新的服务的开发质量，让新服务不再产生类似的问题，我才能把有限的服务的历史问题解决。进一步说，我得构建一套研发体系，提升团队代码的下限，最理想情况是这个下限是这个团队的平均水平。</p>
+<p>最初的研发体系就是提升代码下限问题，所以更多考虑的是研发流程，开发规范，代码评价方式等。随着最近1年多的实践，逐步的完善研发体系的目标，深刻的思考目前的问题，最终形成了目前的一套研发体系。</p>
+<h2 id="研发体系目标"><a href="#研发体系目标" class="headerlink" title="研发体系目标"></a>研发体系目标</h2><p>提升开发效率，提高服务质量，团队共同成长。</p>
+<h2 id="当前问题"><a href="#当前问题" class="headerlink" title="当前问题"></a>当前问题</h2><p>很多技术团队，团队的概念更多的是组织概念，仅仅是做一个任务分配的作用，不会涉及到开发流程。导致团队成员各干各的，没有统一标准，开发质量低下，重复造轮子，没有架构设计，代码不可维护，最终留下很多屎山代码。</p>
+<p>服务端代码的一个特点是代码得实际评估具有一定的延迟性。服务的质量与实践，规模相关。例如同一个服务，有AB两种设计方案，其中A设计很好，B设计很烂。上线半年或一年之内，规模不大的情况下，没什么区别。时间长了，规模大了，设计A在性能，稳定性，可扩展性方面才能表现出来。而糟糕的设计在1年之后表现出来时，往往开发的人都换了，又留下了一堆屎山代码。</p>
+<h2 id="研发体系"><a href="#研发体系" class="headerlink" title="研发体系"></a>研发体系</h2><p>构建一套服务端研发体系，大致有以下7个方面：</p>
+<img src="/2020/03/20/服务端研发体系/tech-system.jpg" title="研发体系">
+
+<h3 id="研发平台"><a href="#研发平台" class="headerlink" title="研发平台"></a>研发平台</h3><p>一个团队，尤其是服务端团队，要有一个统一的开发平台。统一的开发平台具有如下优点：</p>
+<ul>
+<li>统一的环境，方便处理兼容性问题，方便debug。</li>
+<li>提升代码可读性，code review效率高。</li>
+<li>便于开发公共解决方案。</li>
+<li>开发只关注业务逻辑，提升开发效率。</li>
+</ul>
+<p>对于服务端来说，需要三种开发平台，即：web服务开发平台，rpc服务开发平台，组件开发平台。web服务开发平台主要做业务功能开发，rpc服务开发平台适合高性能内部服务，组件开发平台作为基础组件开发。</p>
+<p>开发平台涉及到构建工具，开发语言，业务框架，启动脚本，目录结构，本地数据解决方案，native库解决方案等。</p>
+<p>例如web研发平台的基础环境可以为：jdk11+gradle6+springboot2.2。启动脚本需要统一，支持start，stop，debug等功能，支持自定义参数。至于目录结构，本地数据解决方案，native库解决方案等只要有一个统一的规范即可。</p>
+<p>rpc研发平台大多与web研发平台相同，不同点在于启动的服务是rpc服务，不是web服务。这里涉及到两个问题，一个是rpc选型问题，目前成熟的rpc方案有Dubbo，Thrift，Grpc等，最好统一成一种。另一个是服务治理，包括服务注册，发现，负载均衡，监控等等。理想情况下，对开发来说，在业务开发层面，这两种平台没啥区别。</p>
+<p>基础组件平台主要涉及模块化方案，兼容性问题，组件打包，组件发布，组件测试，日志规范等，相对于web和rpc，较为简单。</p>
+<h3 id="研发流程"><a href="#研发流程" class="headerlink" title="研发流程"></a>研发流程</h3><p>切记拍脑门子做事情！<br>切记着急写代码！</p>
+<p><strong>调研</strong></p>
+<p>接到需求之后，首先要做一些技术调研，如果有成熟的解决方案，要作为参考，避免重复采坑。</p>
+<p><strong>设计</strong></p>
+<p>先做一个初步的设计方案，如果功能不大，可以将自己的想法与团队中某个成员沟通一下，给对方讲清楚大致的方案，获得同事认同再继续。</p>
+<p>如果是一个比较大的需求，可以申请团队的技术评审，技术评审要提前写好技术评审材料，技术评审中要做会议记录。技术评审的目前不是找出最佳设计，而是找到团队共识的方案。</p>
+<p><strong>代码评审</strong></p>
+<p>Code Review的目标是什么，如何提升效率。<br>Code Review阶段目标可以设定为发现明显的设计问题、初级的bug以及风格问题。<br>提升效率的方法：</p>
+<ul>
+<li>结对编程，主要的服务必须有两个人负责，一主一副，主为开发，副为review。这样就算人员变动，交接也很方便。</li>
+<li>Code Review申请者要向Review的人把这次的改动说明白，便于Review的人提升效率。</li>
+<li>统一的研发平台和规范可以提升代码可读性和Code Reveiw效率。</li>
+</ul>
+<p><strong>测试</strong></p>
+<p>要通过功能测试，性能测试和回归测试。</p>
+<p><strong>上线</strong></p>
+<p>灰度上线。</p>
+<p>另外，需要配置完善的监控、报警。要写文档，包括设计文档，接入文档，接口文档等等。这部分具体内容会在下面具体介绍。</p>
+<p>这里单独说一下重构的问题，一定要有设计评审，要达成团队统一方案，切记由于一个人重构导致未来持续重构。</p>
+<h3 id="组件管理"><a href="#组件管理" class="headerlink" title="组件管理"></a>组件管理</h3><p>开发组件的目的是提升代码复用性，推进公共技术，提升开发效率，提升设计能力。</p>
+<p>组件的开发和管理涉及到很多问题。这里介绍一些比较核心的内容：</p>
+<ul>
+<li>首先要有统一的组件仓库，如果是java可以使用maven，公司内部可以搞一个私服，例如nexus。</li>
+<li>仓库要具备线上仓库和snapshot仓库，便于组件测试。</li>
+<li>组件开发要有一套明确的规范，例如兼容性，减少不必要的依赖，测试用例，日志管理，异常管理，接口管理等。</li>
+<li>组件涉及多模块，要做统一版本处理。</li>
+<li>组件的测试发布流程。</li>
+<li>组件的文档规范。</li>
+</ul>
+<h3 id="基础设施"><a href="#基础设施" class="headerlink" title="基础设施"></a>基础设施</h3><p>基础设施的一个主要目标是稳定，好用，良好的基础设施极大地提升开发效率。<br>首先对于基础设施，例如mysql，cassandra，mongodb，redis等，要具有一套标准的测试环境，要具有完善的接入文档和运维文档。</p>
+<p>要构建提升效率的基础设施，例如配置中心，权限服务，日志服务，统一管理系统，ELK服务等等。</p>
+<p>相同类型的基础设施，尽量不要超过两种，减轻运维压力，例如消息队列，搜索服务，注册服务等。</p>
+<h3 id="监控报警"><a href="#监控报警" class="headerlink" title="监控报警"></a>监控报警</h3><p>良好的研发流程和研发平台可以保证代码的质量，但没法保证线上服务不出问题。从另一个角度看，如果线上出问题时必然，尽量做到：</p>
+<ul>
+<li>出问题时及时发现。</li>
+<li>发现问题快速解决。</li>
+<li>提前发现问题，防患于未然。</li>
+</ul>
+<p><strong>metric系统</strong></p>
+<p>metric系统分为客户端组件，时序数据库，UI展示等。<br>客户端组件需要具有高性能，低IO，易用的特点。<br>时序数据库的开源方案有很多，最好支持集群，聚合等功能。<br>UI展示层面，可以使用Grafana。</p>
+<p><strong>日志服务</strong></p>
+<p>日志服务的意思就是把业务服务的日志统一传输到一个日志服务，方便集中的统计，查询。<br>日志服务的客户端要做到低侵入性，做到非阻塞，高效传输。</p>
+<p><strong>API监控</strong></p>
+<p>这里的API监控特指从用户端统计的信息，例如app，web。这些信息包括用户到机房的传输信心，更准确。<br>以上三个服务可以帮助开发提前发现问题，快速排查问题，高效解决为题。</p>
+<p><strong>报警系统</strong></p>
+<p>优秀的报警系统需要具有如下功能：</p>
+<ul>
+<li>完善的统计面板，例如成功率，失败率，日志等。</li>
+<li>丰富的接口配置，例如请求内容支持二进制数据，返回值内容的判断。</li>
+<li>日志报警，支持业务服务日志级别的报警，例如出现某个日志即报警，或者基于某个日志的频率报警。</li>
+<li>误报处理，误报多了，就是失去报警的意义。这里主要涉及报警的出发条件以及报警的频率。报警的出发条件支持配置，可以失败率达到一定条件才报警，报警间隔可以随着连续触发的频率而递增。</li>
+</ul>
+<p><strong>文档建设</strong></p>
+<p>在软件开发过程中，文档无疑是相当重要的。文档涉及到代码的可维护性，技术积累以及团队管理。文档建设的目标是让文档成为团队的核心资产。</p>
+<p>文档建设第一地步是搭建一套良好的文档平台。文档平台有很多选择，包括开源和商用，比较推荐ATLASSIAN的Confluence。<br>要阐明一个误区，文档不是投入时间就能写好的，不同类型的文档有不同的写法，这就涉及到团队文档的规范了。</p>
+<p>代码相关的文档有设计文档，接口文档，接入文档等，其中业务服务，基础服务，基础组件的文档标准都是不同的。</p>
+<p>技术积累包括技术分享，故障处理，开发入门，技术资源等。</p>
+<p>团队管理包括定期总结，会议记录，项目进展等。</p>
+<p>文档所包含的内容非常多，不只是以上三个方面，还有技术类的文档，基础服务类的文档，业务类的文档，数据类的文档等等。</p>
+<h3 id="团队管理"><a href="#团队管理" class="headerlink" title="团队管理"></a>团队管理</h3><p>技术团队中，最核心的资产是人。提升人的能力，也就是提升团队的能力。目前在团队管理方面的经验包括：<br>团队成员一同成长，利用团队快速成长。<br>定期沟通，充分沟通。<br>发挥每个成员的特长，协同完成任务。<br>每个人要做一些不同类型的工作，不要做一个“螺丝钉”。</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://code-plus.cn/2019/10/12/Java-Generics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Code Plus">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Code Plus Home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/10/12/Java-Generics/" class="post-title-link" itemprop="url">Java Generics</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-12 14:40:28 / 修改时间：18:14:39" itemprop="dateCreated datePublished" datetime="2019-10-12T14:40:28+08:00">2019-10-12</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>解决代码泛化问题的一种手段（继承、接口等）。<br>泛型就是类型参数化。<br>设计上提供很多灵活性。<br>泛型、继承和接口，设计接口更加灵活。<br>类型安全，利用泛型可以在编译期间检查这类问题。避免用Object时，运行时才能发现类型问题。<br>使用时指定类型。</p>
+<h2 id="泛型解决什么问题？"><a href="#泛型解决什么问题？" class="headerlink" title="泛型解决什么问题？"></a>泛型解决什么问题？</h2><p>泛型是解决代码泛化问题的一种手段。</p>
+<p>代码复用，代码泛化是程序设计永恒的追求，希望同一份代码可以应用在多种情况，解决多种问题。</p>
+<p>面相对象程序设计中，利用多态来解决代码复用问题，这里的多态是指通过继承、抽象类、接口等技术来实现代码复用。我们只需要针对父类、抽象类或者接口写代码，就可以应用于他们的子类或者实现类中。</p>
+<p>多态可以解决很多问题，但是其中不可避免的问题是，在代码中，具体的类型信息丢失了，因为实际的类型在代码中向上转型为父类、抽象类或者接口了。所以当我们从这些代码中取回对象时，就需要进行强制类型转换。</p>
+<p>强制类型转化会出现运行时问题，出错会因为严重的运行时异常，这在代码编译时无法检查。例如在java中，实现通用的集合，集合内存储的是Object，而当取回集合内的内容是，一定会强制类型转换到需要的类型，这部分在编译时是无法检查的。</p>
+<p>如果可以把类型参数化，在使用集合的使用确定类型，这样，编译器可以进行类型检查，可以解决类型安全问题。这就是泛型技术的直接原因。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基于多态</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Object b;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setB</span><span class="params">(Object b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.b = b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">--------------------------------------  </span><br><span class="line">A a=<span class="keyword">new</span> A();</span><br><span class="line">a.setB(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">int</span> b=(<span class="keyword">int</span>)a.getB();<span class="comment">//需要做类型强转</span></span><br><span class="line">String c=(String)a.getB();<span class="comment">//运行时，ClassCastException</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//基于泛型</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T b;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setB</span><span class="params">(T b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.b = b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">A&lt;Integer&gt; a=<span class="keyword">new</span> A&lt;Integer&gt;();</span><br><span class="line">a.setB(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">int</span> b=a.getB();<span class="comment">//不需要做类型强转，自动完成</span></span><br><span class="line">String c=(String)a.getB();<span class="comment">//编译期报错,直接编译不通过</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><p>类型参数为非基础类型。基础类型可以使用包装类。</p>
+<h2 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//此处T可以随便写为任意标识，常见的如T、E、K、V等形式的参数常用于表示泛型</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Generic</span>&lt;<span class="title">T</span>&gt;</span>&#123; </span><br><span class="line">    <span class="comment">//key这个成员变量的类型为T,T的类型由外部指定  </span></span><br><span class="line">    <span class="keyword">private</span> T key;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Generic</span><span class="params">(T key)</span> </span>&#123; <span class="comment">//泛型构造方法形参key的类型也为T，T的类型由外部指定</span></span><br><span class="line">        <span class="keyword">this</span>.key = key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getKey</span><span class="params">()</span></span>&#123; <span class="comment">//泛型方法getKey的返回值类型为T，T的类型由外部指定</span></span><br><span class="line">        <span class="keyword">return</span> key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用时，也可以不传参数类型。</p>
+<h2 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个泛型接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Generator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当实现泛型接口的类，未传入泛型实参时</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 未传入泛型实参时，与泛型类的定义相同，在声明类的时候，需将泛型的声明也一起加到类中</span></span><br><span class="line"><span class="comment"> * 即：class FruitGenerator&lt;T&gt; implements Generator&lt;T&gt;&#123;</span></span><br><span class="line"><span class="comment"> * 如果不声明泛型，如：class FruitGenerator implements Generator&lt;T&gt;，编译器会报错："Unknown class"</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FruitGenerator</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Generator</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当实现泛型接口的类，传入泛型实参时</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 传入泛型实参时：</span></span><br><span class="line"><span class="comment"> * 定义一个生产器实现这个接口,虽然我们只创建了一个泛型接口Generator&lt;T&gt;</span></span><br><span class="line"><span class="comment"> * 但是我们可以为T传入无数个实参，形成无数种类型的Generator接口。</span></span><br><span class="line"><span class="comment"> * 在实现类实现泛型接口时，如已将泛型类型传入实参类型，则所有使用泛型的地方都要替换成传入的实参类型</span></span><br><span class="line"><span class="comment"> * 即：Generator&lt;T&gt;，public T next();中的的T都要替换成传入的String类型。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FruitGenerator</span> <span class="keyword">implements</span> <span class="title">Generator</span>&lt;<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String[] fruits = <span class="keyword">new</span> String[]&#123;<span class="string">"Apple"</span>, <span class="string">"Banana"</span>, <span class="string">"Pear"</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Random rand = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">return</span> fruits[rand.nextInt(<span class="number">3</span>)];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><p>使用时不需要是声明类型参数，编译器可以通过函数签名推断。</p>
+<p>相较于泛型类，可以优先使用泛型方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 泛型方法的基本介绍</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> tClass 传入的泛型实参</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> T 返回值为T类型</span></span><br><span class="line"><span class="comment"> * 说明：</span></span><br><span class="line"><span class="comment"> *     1）public 与 返回值中间&lt;T&gt;非常重要，可以理解为声明此方法为泛型方法。</span></span><br><span class="line"><span class="comment"> *     2）只有声明了&lt;T&gt;的方法才是泛型方法，泛型类中的使用了泛型的成员方法并不是泛型方法。</span></span><br><span class="line"><span class="comment"> *     3）&lt;T&gt;表明该方法将使用泛型类型T，此时才可以在方法中使用泛型类型T。</span></span><br><span class="line"><span class="comment"> *     4）与泛型类的定义一样，此处T可以随便写为任意标识，常见的如T、E、K、V等形式的参数常用于表示泛型。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">genericMethod</span><span class="params">(Class&lt;T&gt; tClass)</span><span class="keyword">throws</span> InstantiationException ,</span></span><br><span class="line"><span class="function">  IllegalAccessException</span>&#123;</span><br><span class="line">        T instance = tClass.newInstance();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="核心问题"><a href="#核心问题" class="headerlink" title="核心问题"></a>核心问题</h1><h2 id="擦除"><a href="#擦除" class="headerlink" title="擦除"></a>擦除</h2><p>在泛型代码内部，无法获得任何有关泛型参数类型的信息。</p>
+<p>无法通过反射取得类型信息。</p>
+<p>可以不使用类型参数。</p>
+<p>导致运行时instanceof，new无法使用。</p>
+<p>不能创建泛型数组。</p>
+<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><p>Class<t>类型标记。</t></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回类型参数占位符</span></span><br><span class="line">Class.getTypeParameters()</span><br><span class="line"><span class="comment">//List&lt;String&gt;与List&lt;Integer&gt;是同一种类型。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="类型限定"><a href="#类型限定" class="headerlink" title="类型限定"></a>类型限定</h2><p>限定泛型类型，相当于与传统多态相结合，方便调用限定类型的方法。这里只能是extends，不能用super。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;T extends &lt;<span class="class"><span class="keyword">class</span>&gt; &amp; &lt;<span class="title">class</span>&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><h3 id="限定通配符"><a href="#限定通配符" class="headerlink" title="限定通配符"></a>限定通配符</h3><p>泛型类型必须用限定内的类型来进行初始化，否则会导致编译错误。<br>主要是解决由于类型擦除导致泛型类没法调用实际泛型类所拥有的方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//保证泛型类型必须是 T 的子类来设定泛型类型的上边界</span></span><br><span class="line">&lt;? extends T&gt;</span><br><span class="line"><span class="comment">//来保证泛型类型必须是 T 的父类来设定类型的下边界</span></span><br><span class="line">&lt;? <span class="keyword">super</span> T&gt;</span><br></pre></td></tr></table></figure>
+
+<p>以上为赋值限制，下面是读写操作限制。</p>
+<h4 id="extends上界能读不能写"><a href="#extends上界能读不能写" class="headerlink" title="extends上界能读不能写"></a>extends上界能读不能写</h4><blockquote>
+<p>List&lt;? extends E&gt;表示该list集合中存放的都是E的子类型（包括E自身），由于E的子类型可能有很多，但是我们存放元素时实际上只能存放其中的一种子类型（这是为了泛型安全，因为其会在编译期间生成桥接方法<bridge methods>该方法中会出现强制转换，若出现多种子类型，则会强制转换失败）为了安全，Java只能将其设计成不能添加元素。<br>虽然List&lt;? extends E&gt;不能添加元素，但是由于其中的元素都有一个共性–有共同的父类，因此我们在获取元素时可以将他们统一强制转换为E类型，我们称之为get原则。</bridge></p>
+</blockquote>
+<h4 id="super下届能写不能读"><a href="#super下届能写不能读" class="headerlink" title="super下届能写不能读"></a>super下届能写不能读</h4><blockquote>
+<p>对于List&lt;? super E&gt;其list中存放的都是E的父类型元素（包括E），我们在向其添加元素时，只能向其添加E的子类型元素（包括E类型），这样在编译期间将其强制转换为E类型时是类型安全的,但是，由于该集合中的元素都是E的父类型（包括E），其中的元素类型众多，在获取元素时我们无法判断是哪一种类型，故设计成不能获取元素(获取类型只能是Object)，我们称之为put原则。</p>
+</blockquote>
+<h4 id="PECS"><a href="#PECS" class="headerlink" title="PECS"></a>PECS</h4><p>producer-extends,consumer-super。</p>
+<p>所有的comparable和comparator都是consumer。</p>
+<h3 id="非限定通配符"><a href="#非限定通配符" class="headerlink" title="非限定通配符"></a>非限定通配符</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用任意泛型类型来代替，因为泛型是不支持继承关系的，所以&lt;?&gt;很大程度上弥补了这一不足。</span></span><br><span class="line">Generic&lt;T&gt;逻辑上可以理解为Generic&lt;Integer&gt;、Generic&lt;String&gt;等的父类。（实际上没有继承关系）</span><br></pre></td></tr></table></figure>
+
+<p>example：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        list.add(<span class="number">12</span>);</span><br><span class="line">        handle(list);</span><br><span class="line">        List&lt;Float&gt; list1 = <span class="keyword">new</span> ArrayList&lt;Float&gt;();</span><br><span class="line">        list1.add(<span class="number">123.0f</span>);</span><br><span class="line">        handle(list1);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(List&lt;?&gt; list)</span> </span>&#123;</span><br><span class="line">        System.out.println(list.get(<span class="number">0</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是这里可以不写泛型。</p>
+<p>可以将List&lt;?&gt;当做List<xxx>的“父类”，虽然说泛型没有继承关系。</xxx></p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://code-plus.cn/2019/10/10/Java-Enum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Code Plus">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Code Plus Home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/10/10/Java-Enum/" class="post-title-link" itemprop="url">Java Enum</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-10 18:18:19" itemprop="dateCreated datePublished" datetime="2019-10-10T18:18:19+08:00">2019-10-10</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-12 18:13:38" itemprop="dateModified" datetime="2019-10-12T18:13:38+08:00">2019-10-12</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h1><blockquote>
+<p>关键字enum可以将一组具名的值的有限集合创建为一种新的类型，而这些具名的值可以作为常规的程序组件使用。</p>
+</blockquote>
+<h1 id="enum的基本特性"><a href="#enum的基本特性" class="headerlink" title="enum的基本特性"></a>enum的基本特性</h1><p>创建enum时，编译器会生成一个相关的类，这个类继承自java.lang.Enum。</p>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><h3 id="values"><a href="#values" class="headerlink" title="values()"></a>values()</h3><p>返回enum实例的数组，用于遍历enum实例。这个方法不存在于java.lang.Enum。是编译器添加的一个静态方法。功能上与Class中getEnumConstants()方法相同。</p>
+<h3 id="和equals"><a href="#和equals" class="headerlink" title="== 和equals()"></a>== 和equals()</h3><p>相等比较</p>
+<h3 id="compareTo"><a href="#compareTo" class="headerlink" title="compareTo()"></a>compareTo()</h3><p>实现Comparable接口</p>
+<h3 id="name-和toString"><a href="#name-和toString" class="headerlink" title="name()和toString()"></a>name()和toString()</h3><p>返回enum实例值的字符串表示</p>
+<h3 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf()"></a>valueOf()</h3><p>根据名字返回enum实例</p>
+<h2 id="java-lang-Enum"><a href="#java-lang-Enum" class="headerlink" title="java.lang.Enum"></a>java.lang.Enum</h2><p>所有的枚举类型都会继承Enum,结构如下</p>
+<img src="/2019/10/10/Java-Enum/Enum.png" title="This is an example image">
+
+
+<ul>
+<li>name为枚举类型声明时的名字</li>
+<li>ordinal为枚举实例声明的次序，从0开始</li>
+</ul>
+<h2 id="自定义方法"><a href="#自定义方法" class="headerlink" title="自定义方法"></a>自定义方法</h2><p>enum可以看做是一种类。enum类型不能继承，因为枚举都继承自java.lang.Enum，也不能被继承，因为会被编译成final类。可以向enum类型中添加方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> OzWitch &#123;</span><br><span class="line">    WEST(<span class="string">"WEST description"</span>),</span><br><span class="line">    NORTH(<span class="string">"NORTH description"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">    OzWitch(String description) &#123;</span><br><span class="line">        <span class="keyword">this</span>.description = description;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDescription</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> description;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name().toLowerCase();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (OzWitch ozWitch : OzWitch.values())&#123;</span><br><span class="line">            System.out.println(ozWitch);</span><br><span class="line">            System.out.println(ozWitch.getDescription());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的例子为枚举类型修改了构造方法，同时添加了两个方法。其中构造方法不能是public。当然也可以覆盖枚举类型的方法。</p>
+<h1 id="实现接口"><a href="#实现接口" class="headerlink" title="实现接口"></a>实现接口</h1><p>enum实例不能继承，但是可以实现接口。</p>
+<h1 id="switch语句中使用enum"><a href="#switch语句中使用enum" class="headerlink" title="switch语句中使用enum"></a>switch语句中使用enum</h1><p>switch中只能使用整数值，而枚举实例本身就具有整数值的次序。</p>
+<h1 id="常量方法"><a href="#常量方法" class="headerlink" title="常量方法"></a>常量方法</h1><p>实现常量方法，需要为enum定义abstract方法，然后为每个实例实现该抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Shrubbery &#123;</span><br><span class="line">    GROUND &#123;</span><br><span class="line">        <span class="function">String <span class="title">getInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> name().toLowerCase();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    CRAWLING &#123;</span><br><span class="line">        <span class="function">String <span class="title">getInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> name().toLowerCase();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    HANGING &#123;</span><br><span class="line">        <span class="function">String <span class="title">getInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> name().toLowerCase();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> String <span class="title">getInfo</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Shrubbery shrubbery : Shrubbery.values())&#123;</span><br><span class="line">            System.out.println(shrubbery.getInfo());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="enum类型编译"><a href="#enum类型编译" class="headerlink" title="enum类型编译"></a>enum类型编译</h1><p>下面为enum Shrubbery编译之后的代码。编译之后为final类。继承自java.lang.Enum。Shrubbery中的值均为Shrubbery类型的static final 实例。编译器添加了两个方法，分别是values()和valueOf()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Shrubbery</span> <span class="keyword">extends</span> <span class="title">java</span>.<span class="title">lang</span>.<span class="title">Enum</span>&lt;<span class="title">Shrubbery</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Shrubbery GROUND;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Shrubbery CRAWLING;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Shrubbery HANGING;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Shrubbery[] values();</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Shrubbery <span class="title">valueOf</span><span class="params">(java.lang.String)</span></span>;</span><br><span class="line">  <span class="keyword">static</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </article>
+  
+  
+  
+
+    
+  </div>
+
+  
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Code Plus</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+        
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Code Plus</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

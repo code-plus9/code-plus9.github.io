@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="服务端内部管理系统的质量一直是个痛点。 比较重要的业务系统，会有一个团队来开发维护。这类的管理系统因为涉及核心业务，投入资源比较大，会配置PM，UI，前端，服务端，质量和完成度会比较好。 随着服务端涉及的功能越来越复杂以及各个功能的服务化，服务端团队需要很多内部管理系统，例如短信服务，图片上传服务，权限服务等。这类系统的特点是：每个功能都比较简单，整体上看需求比较杂，数量比较庞大。开篇所说的内部系">
+<meta name="keywords" content="架构设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何高效构建管理系统">
+<meta property="og:url" content="http://code-plus.cn/2020/05/22/如何高效构建管理系统/index.html">
+<meta property="og:site_name" content="Code Plus Home">
+<meta property="og:description" content="服务端内部管理系统的质量一直是个痛点。 比较重要的业务系统，会有一个团队来开发维护。这类的管理系统因为涉及核心业务，投入资源比较大，会配置PM，UI，前端，服务端，质量和完成度会比较好。 随着服务端涉及的功能越来越复杂以及各个功能的服务化，服务端团队需要很多内部管理系统，例如短信服务，图片上传服务，权限服务等。这类系统的特点是：每个功能都比较简单，整体上看需求比较杂，数量比较庞大。开篇所说的内部系">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://code-plus.cn/2020/05/22/如何高效构建管理系统/editor-manager.png">
+<meta property="og:image" content="http://code-plus.cn/2020/05/22/如何高效构建管理系统/editor-front.png">
+<meta property="og:updated_time" content="2020-05-31T17:29:52.826Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何高效构建管理系统">
+<meta name="twitter:description" content="服务端内部管理系统的质量一直是个痛点。 比较重要的业务系统，会有一个团队来开发维护。这类的管理系统因为涉及核心业务，投入资源比较大，会配置PM，UI，前端，服务端，质量和完成度会比较好。 随着服务端涉及的功能越来越复杂以及各个功能的服务化，服务端团队需要很多内部管理系统，例如短信服务，图片上传服务，权限服务等。这类系统的特点是：每个功能都比较简单，整体上看需求比较杂，数量比较庞大。开篇所说的内部系">
+<meta name="twitter:image" content="http://code-plus.cn/2020/05/22/如何高效构建管理系统/editor-manager.png">
+  <link rel="canonical" href="http://code-plus.cn/2020/05/22/如何高效构建管理系统/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>如何高效构建管理系统 | Code Plus Home</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Code Plus Home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://code-plus.cn/2020/05/22/如何高效构建管理系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Code Plus">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Code Plus Home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">如何高效构建管理系统
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-22 01:22:26" itemprop="dateCreated datePublished" datetime="2020-05-22T01:22:26+08:00">2020-05-22</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-01 01:29:52" itemprop="dateModified" datetime="2020-06-01T01:29:52+08:00">2020-06-01</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>服务端内部管理系统的质量一直是个痛点。</p>
+<p>比较重要的业务系统，会有一个团队来开发维护。这类的管理系统因为涉及核心业务，投入资源比较大，会配置PM，UI，前端，服务端，质量和完成度会比较好。</p>
+<p>随着服务端涉及的功能越来越复杂以及各个功能的服务化，服务端团队需要很多内部管理系统，例如短信服务，图片上传服务，权限服务等。这类系统的特点是：每个功能都比较简单，整体上看需求比较杂，数量比较庞大。开篇所说的内部系统主要指的就是这类系统。<br>在实际的开发过程中，由于这类系统的特点，不会投入过多资源，往往都是这个服务的开发自己做。一般会产生以下情况：</p>
+<h3 id="不做管理系统"><a href="#不做管理系统" class="headerlink" title="不做管理系统"></a>不做管理系统</h3><p>如果不做管理系统，那有一些配置管理的需求怎么办？答案是直接修改数据库，实际上这种情况占比不小。这么做的主要问题：一个是运营需求得找开发，效率低；另一个是直接改数据库，可能会改错，导致服务出问题。</p>
+<h3 id="只做接口"><a href="#只做接口" class="headerlink" title="只做接口"></a>只做接口</h3><p>服务端开发往往不愿意写前端代码，主要是因为服务端写前端的效率不高，而且一般服务端并不了解前端UI框架，写出来也比较丑。这么做的主要问题：运营需求跟开发依然不能分离。</p>
+<h3 id="做个简单页面"><a href="#做个简单页面" class="headerlink" title="做个简单页面"></a>做个简单页面</h3><p>如果运营需求很频繁，即使服务端开发前端效率低，也得做。总结一下这么做的主要问题：完成度差，UI风格不统一，系统分散，安全相关的账号、权限、操作记录等都不具备。</p>
+<h3 id="做个完整的系统"><a href="#做个完整的系统" class="headerlink" title="做个完整的系统"></a>做个完整的系统</h3><p>如果每个系统都投入UI，前端，服务端去开发，也会有如下问题：系统分散杂乱；UI，交互不统一；账号，权限，历史记录等功能重复开发。</p>
+<p>以上总结了内部管理系统的问题，间接的得出了一个结论：高质量的内部系统是可以提升团队的开发效率的。既然在高质量的问题上可以达成共识，下面需要讨论的是如果构建一套流程高效的完成，实现服务开发、前端开发、管理系统维护的平衡。</p>
+<p>统一管理系统架构</p>
+<img src="/2020/05/22/如何高效构建管理系统/editor-manager.png" title="整体架构">
+
+<p>管理系统页面二级结构</p>
+<img src="/2020/05/22/如何高效构建管理系统/editor-front.png" title="前端页面二级结构">
+
+<p>服务端：只负责编写管理相关的API接口，涉及到账号、权限的部分，接入统一的账号服务，权限服务。</p>
+<p>统一管理系统：所有管理系统的统一入口，负责账号登录，系统级别的权限管理，操作历史记录等。</p>
+<p>前端：账号、权限和操作历史与统一管理系统对接；业务功能与具体的服务端对接。</p>
+<p>页面二级结构：一级页面中可以配置子系统，系统模块多时，只展示当前账号具有权限的系统，一级页面可配置，只开发一次即可。<br>二级页面独占一个页面，方便系统功能开发。</p>
+<p>备注：<br>账号、权限需要有统一的服务。<br>业务服务端和统一管理系统在账号、权限等公共问题的接口是一致的。<br>新增管理系统，只需要前端页面与具体的服务端管理api对接。<br>前端页面统一在一起，方便UI风格，交互方式统一。</p>
+<p>这套流程已经在团队中实践一段时间了，目前已经接入多个系统，取得了一定的效果。</p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/架构设计/" rel="tag"># 架构设计</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/04/28/程序员工作层次/" rel="next" title="程序员工作层次">
+                  <i class="fa fa-chevron-left"></i> 程序员工作层次
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#不做管理系统"><span class="nav-number">1.</span> <span class="nav-text">不做管理系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#只做接口"><span class="nav-number">2.</span> <span class="nav-text">只做接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做个简单页面"><span class="nav-number">3.</span> <span class="nav-text">做个简单页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做个完整的系统"><span class="nav-number">4.</span> <span class="nav-text">做个完整的系统</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Code Plus</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+        
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Code Plus</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

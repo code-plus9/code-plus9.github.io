@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="“研发体系”这个词，听上去比较抽象，像是一种“PPT”词汇。本文中的“研发体系”并不抽象，而是从一线研发的角度，具体思考研发体系的问题。 背景首先介绍我个人思考“研发体系”的背景。前两年工作变动，我调整到了一个历史悠久的研发组。刚开始就遇到了核心系统不稳定的问题，所谓历史悠久，是指核心服务的代码时间很久，有很多历史问题，在那段时间集中爆发了。 在解决稳定性问题时，我发现绝大多数问题并不复杂，都是一">
+<meta name="keywords" content="技术团队">
+<meta property="og:type" content="article">
+<meta property="og:title" content="服务端研发体系">
+<meta property="og:url" content="http://code-plus.cn/2020/03/20/服务端研发体系/index.html">
+<meta property="og:site_name" content="Code Plus Home">
+<meta property="og:description" content="“研发体系”这个词，听上去比较抽象，像是一种“PPT”词汇。本文中的“研发体系”并不抽象，而是从一线研发的角度，具体思考研发体系的问题。 背景首先介绍我个人思考“研发体系”的背景。前两年工作变动，我调整到了一个历史悠久的研发组。刚开始就遇到了核心系统不稳定的问题，所谓历史悠久，是指核心服务的代码时间很久，有很多历史问题，在那段时间集中爆发了。 在解决稳定性问题时，我发现绝大多数问题并不复杂，都是一">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://code-plus.cn/2020/03/20/服务端研发体系/tech-system.jpg">
+<meta property="og:updated_time" content="2020-05-31T17:46:25.861Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="服务端研发体系">
+<meta name="twitter:description" content="“研发体系”这个词，听上去比较抽象，像是一种“PPT”词汇。本文中的“研发体系”并不抽象，而是从一线研发的角度，具体思考研发体系的问题。 背景首先介绍我个人思考“研发体系”的背景。前两年工作变动，我调整到了一个历史悠久的研发组。刚开始就遇到了核心系统不稳定的问题，所谓历史悠久，是指核心服务的代码时间很久，有很多历史问题，在那段时间集中爆发了。 在解决稳定性问题时，我发现绝大多数问题并不复杂，都是一">
+<meta name="twitter:image" content="http://code-plus.cn/2020/03/20/服务端研发体系/tech-system.jpg">
+  <link rel="canonical" href="http://code-plus.cn/2020/03/20/服务端研发体系/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>服务端研发体系 | Code Plus Home</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Code Plus Home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://code-plus.cn/2020/03/20/服务端研发体系/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Code Plus">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Code Plus Home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">服务端研发体系
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-20 01:31:15" itemprop="dateCreated datePublished" datetime="2020-03-20T01:31:15+08:00">2020-03-20</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-01 01:46:25" itemprop="dateModified" datetime="2020-06-01T01:46:25+08:00">2020-06-01</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>“研发体系”这个词，听上去比较抽象，像是一种“PPT”词汇。本文中的“研发体系”并不抽象，而是从一线研发的角度，具体思考研发体系的问题。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>首先介绍我个人思考“研发体系”的背景。前两年工作变动，我调整到了一个历史悠久的研发组。刚开始就遇到了核心系统不稳定的问题，所谓历史悠久，是指核心服务的代码时间很久，有很多历史问题，在那段时间集中爆发了。</p>
+<p>在解决稳定性问题时，我发现绝大多数问题并不复杂，都是一些小问题，在研发阶段都可以避免，例如请求一个内部web服务，并没有通过域名，而是直接与具体服务的机器名直接连接，轮询请求，在请求时并没有做异常检测，也没有熔断机制，内部web服务一个节点阻塞，或者挂了，直接导致业务服务因为线程池打满而阻塞。看似直连提升的性能，却没有解决直连产生的问题。例如一些服务发布组件给业务调用，并没有做服务化，组件的实现就是直接查数据库，组件依赖复杂，业务接入复杂，服务升级优化困难。这类小问题在服务中多了，时间长了，就会集中爆发。当时令我比较痛苦的并不是解决已有的问题，而是在我解决问题时，新开发的服务也在不断的产生类似的问题。这就会导致子子孙孙无穷尽了。</p>
+<p>首先得保证新的服务的开发质量，让新服务不再产生类似的问题，我才能把有限的服务的历史问题解决。进一步说，我得构建一套研发体系，提升团队代码的下限，最理想情况是这个下限是这个团队的平均水平。</p>
+<p>最初的研发体系就是提升代码下限问题，所以更多考虑的是研发流程，开发规范，代码评价方式等。随着最近1年多的实践，逐步的完善研发体系的目标，深刻的思考目前的问题，最终形成了目前的一套研发体系。</p>
+<h2 id="研发体系目标"><a href="#研发体系目标" class="headerlink" title="研发体系目标"></a>研发体系目标</h2><p>提升开发效率，提高服务质量，团队共同成长。</p>
+<h2 id="当前问题"><a href="#当前问题" class="headerlink" title="当前问题"></a>当前问题</h2><p>很多技术团队，团队的概念更多的是组织概念，仅仅是做一个任务分配的作用，不会涉及到开发流程。导致团队成员各干各的，没有统一标准，开发质量低下，重复造轮子，没有架构设计，代码不可维护，最终留下很多屎山代码。</p>
+<p>服务端代码的一个特点是代码得实际评估具有一定的延迟性。服务的质量与实践，规模相关。例如同一个服务，有AB两种设计方案，其中A设计很好，B设计很烂。上线半年或一年之内，规模不大的情况下，没什么区别。时间长了，规模大了，设计A在性能，稳定性，可扩展性方面才能表现出来。而糟糕的设计在1年之后表现出来时，往往开发的人都换了，又留下了一堆屎山代码。</p>
+<h2 id="研发体系"><a href="#研发体系" class="headerlink" title="研发体系"></a>研发体系</h2><p>构建一套服务端研发体系，大致有以下7个方面：</p>
+<img src="/2020/03/20/服务端研发体系/tech-system.jpg" title="研发体系">
+
+<h3 id="研发平台"><a href="#研发平台" class="headerlink" title="研发平台"></a>研发平台</h3><p>一个团队，尤其是服务端团队，要有一个统一的开发平台。统一的开发平台具有如下优点：</p>
+<ul>
+<li>统一的环境，方便处理兼容性问题，方便debug。</li>
+<li>提升代码可读性，code review效率高。</li>
+<li>便于开发公共解决方案。</li>
+<li>开发只关注业务逻辑，提升开发效率。</li>
+</ul>
+<p>对于服务端来说，需要三种开发平台，即：web服务开发平台，rpc服务开发平台，组件开发平台。web服务开发平台主要做业务功能开发，rpc服务开发平台适合高性能内部服务，组件开发平台作为基础组件开发。</p>
+<p>开发平台涉及到构建工具，开发语言，业务框架，启动脚本，目录结构，本地数据解决方案，native库解决方案等。</p>
+<p>例如web研发平台的基础环境可以为：jdk11+gradle6+springboot2.2。启动脚本需要统一，支持start，stop，debug等功能，支持自定义参数。至于目录结构，本地数据解决方案，native库解决方案等只要有一个统一的规范即可。</p>
+<p>rpc研发平台大多与web研发平台相同，不同点在于启动的服务是rpc服务，不是web服务。这里涉及到两个问题，一个是rpc选型问题，目前成熟的rpc方案有Dubbo，Thrift，Grpc等，最好统一成一种。另一个是服务治理，包括服务注册，发现，负载均衡，监控等等。理想情况下，对开发来说，在业务开发层面，这两种平台没啥区别。</p>
+<p>基础组件平台主要涉及模块化方案，兼容性问题，组件打包，组件发布，组件测试，日志规范等，相对于web和rpc，较为简单。</p>
+<h3 id="研发流程"><a href="#研发流程" class="headerlink" title="研发流程"></a>研发流程</h3><p>切记拍脑门子做事情！<br>切记着急写代码！</p>
+<p><strong>调研</strong></p>
+<p>接到需求之后，首先要做一些技术调研，如果有成熟的解决方案，要作为参考，避免重复采坑。</p>
+<p><strong>设计</strong></p>
+<p>先做一个初步的设计方案，如果功能不大，可以将自己的想法与团队中某个成员沟通一下，给对方讲清楚大致的方案，获得同事认同再继续。</p>
+<p>如果是一个比较大的需求，可以申请团队的技术评审，技术评审要提前写好技术评审材料，技术评审中要做会议记录。技术评审的目前不是找出最佳设计，而是找到团队共识的方案。</p>
+<p><strong>代码评审</strong></p>
+<p>Code Review的目标是什么，如何提升效率。<br>Code Review阶段目标可以设定为发现明显的设计问题、初级的bug以及风格问题。<br>提升效率的方法：</p>
+<ul>
+<li>结对编程，主要的服务必须有两个人负责，一主一副，主为开发，副为review。这样就算人员变动，交接也很方便。</li>
+<li>Code Review申请者要向Review的人把这次的改动说明白，便于Review的人提升效率。</li>
+<li>统一的研发平台和规范可以提升代码可读性和Code Reveiw效率。</li>
+</ul>
+<p><strong>测试</strong></p>
+<p>要通过功能测试，性能测试和回归测试。</p>
+<p><strong>上线</strong></p>
+<p>灰度上线。</p>
+<p>另外，需要配置完善的监控、报警。要写文档，包括设计文档，接入文档，接口文档等等。这部分具体内容会在下面具体介绍。</p>
+<p>这里单独说一下重构的问题，一定要有设计评审，要达成团队统一方案，切记由于一个人重构导致未来持续重构。</p>
+<h3 id="组件管理"><a href="#组件管理" class="headerlink" title="组件管理"></a>组件管理</h3><p>开发组件的目的是提升代码复用性，推进公共技术，提升开发效率，提升设计能力。</p>
+<p>组件的开发和管理涉及到很多问题。这里介绍一些比较核心的内容：</p>
+<ul>
+<li>首先要有统一的组件仓库，如果是java可以使用maven，公司内部可以搞一个私服，例如nexus。</li>
+<li>仓库要具备线上仓库和snapshot仓库，便于组件测试。</li>
+<li>组件开发要有一套明确的规范，例如兼容性，减少不必要的依赖，测试用例，日志管理，异常管理，接口管理等。</li>
+<li>组件涉及多模块，要做统一版本处理。</li>
+<li>组件的测试发布流程。</li>
+<li>组件的文档规范。</li>
+</ul>
+<h3 id="基础设施"><a href="#基础设施" class="headerlink" title="基础设施"></a>基础设施</h3><p>基础设施的一个主要目标是稳定，好用，良好的基础设施极大地提升开发效率。<br>首先对于基础设施，例如mysql，cassandra，mongodb，redis等，要具有一套标准的测试环境，要具有完善的接入文档和运维文档。</p>
+<p>要构建提升效率的基础设施，例如配置中心，权限服务，日志服务，统一管理系统，ELK服务等等。</p>
+<p>相同类型的基础设施，尽量不要超过两种，减轻运维压力，例如消息队列，搜索服务，注册服务等。</p>
+<h3 id="监控报警"><a href="#监控报警" class="headerlink" title="监控报警"></a>监控报警</h3><p>良好的研发流程和研发平台可以保证代码的质量，但没法保证线上服务不出问题。从另一个角度看，如果线上出问题时必然，尽量做到：</p>
+<ul>
+<li>出问题时及时发现。</li>
+<li>发现问题快速解决。</li>
+<li>提前发现问题，防患于未然。</li>
+</ul>
+<p><strong>metric系统</strong></p>
+<p>metric系统分为客户端组件，时序数据库，UI展示等。<br>客户端组件需要具有高性能，低IO，易用的特点。<br>时序数据库的开源方案有很多，最好支持集群，聚合等功能。<br>UI展示层面，可以使用Grafana。</p>
+<p><strong>日志服务</strong></p>
+<p>日志服务的意思就是把业务服务的日志统一传输到一个日志服务，方便集中的统计，查询。<br>日志服务的客户端要做到低侵入性，做到非阻塞，高效传输。</p>
+<p><strong>API监控</strong></p>
+<p>这里的API监控特指从用户端统计的信息，例如app，web。这些信息包括用户到机房的传输信心，更准确。<br>以上三个服务可以帮助开发提前发现问题，快速排查问题，高效解决为题。</p>
+<p><strong>报警系统</strong></p>
+<p>优秀的报警系统需要具有如下功能：</p>
+<ul>
+<li>完善的统计面板，例如成功率，失败率，日志等。</li>
+<li>丰富的接口配置，例如请求内容支持二进制数据，返回值内容的判断。</li>
+<li>日志报警，支持业务服务日志级别的报警，例如出现某个日志即报警，或者基于某个日志的频率报警。</li>
+<li>误报处理，误报多了，就是失去报警的意义。这里主要涉及报警的出发条件以及报警的频率。报警的出发条件支持配置，可以失败率达到一定条件才报警，报警间隔可以随着连续触发的频率而递增。</li>
+</ul>
+<p><strong>文档建设</strong></p>
+<p>在软件开发过程中，文档无疑是相当重要的。文档涉及到代码的可维护性，技术积累以及团队管理。文档建设的目标是让文档成为团队的核心资产。</p>
+<p>文档建设第一地步是搭建一套良好的文档平台。文档平台有很多选择，包括开源和商用，比较推荐ATLASSIAN的Confluence。<br>要阐明一个误区，文档不是投入时间就能写好的，不同类型的文档有不同的写法，这就涉及到团队文档的规范了。</p>
+<p>代码相关的文档有设计文档，接口文档，接入文档等，其中业务服务，基础服务，基础组件的文档标准都是不同的。</p>
+<p>技术积累包括技术分享，故障处理，开发入门，技术资源等。</p>
+<p>团队管理包括定期总结，会议记录，项目进展等。</p>
+<p>文档所包含的内容非常多，不只是以上三个方面，还有技术类的文档，基础服务类的文档，业务类的文档，数据类的文档等等。</p>
+<h3 id="团队管理"><a href="#团队管理" class="headerlink" title="团队管理"></a>团队管理</h3><p>技术团队中，最核心的资产是人。提升人的能力，也就是提升团队的能力。目前在团队管理方面的经验包括：<br>团队成员一同成长，利用团队快速成长。<br>定期沟通，充分沟通。<br>发挥每个成员的特长，协同完成任务。<br>每个人要做一些不同类型的工作，不要做一个“螺丝钉”。</p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/技术团队/" rel="tag"># 技术团队</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/12/Java-Generics/" rel="next" title="Java Generics">
+                  <i class="fa fa-chevron-left"></i> Java Generics
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/04/28/程序员工作层次/" rel="prev" title="程序员工作层次">
+                  程序员工作层次 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#研发体系目标"><span class="nav-number">2.</span> <span class="nav-text">研发体系目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当前问题"><span class="nav-number">3.</span> <span class="nav-text">当前问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#研发体系"><span class="nav-number">4.</span> <span class="nav-text">研发体系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#研发平台"><span class="nav-number">4.1.</span> <span class="nav-text">研发平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#研发流程"><span class="nav-number">4.2.</span> <span class="nav-text">研发流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件管理"><span class="nav-number">4.3.</span> <span class="nav-text">组件管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础设施"><span class="nav-number">4.4.</span> <span class="nav-text">基础设施</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监控报警"><span class="nav-number">4.5.</span> <span class="nav-text">监控报警</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#团队管理"><span class="nav-number">4.6.</span> <span class="nav-text">团队管理</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Code Plus</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+        
+      </div>
+    
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Code Plus</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
